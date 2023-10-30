@@ -6,4 +6,3 @@
 - API call is done according to location and location specific restaurants are fetched
 - Used context api and redux toolkit for global state management
 - Used github api to fetch about details 
-- 
