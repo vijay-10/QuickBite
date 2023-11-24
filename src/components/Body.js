@@ -84,7 +84,7 @@ const Body = () => {
         </div>
       </div>
       {restaurantList?.length ? (
-        <div className="res-container flex flex-wrap justify-between">
+        <div className="res-container flex flex-wrap justify-center gap-2">
           {filteredResList?.map((restaurant) => (
             <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
           ))}

@@ -17,7 +17,7 @@ const About = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://api.github.com/users/vijay-10");
+    const data = await fetch("https://api.github.com/users/vijaynvvr");
     const json = await data.json();
     setUserInfo(json);
   };
