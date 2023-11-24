@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RESTAURANTS_API } from "./../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -15,7 +15,7 @@ const Body = () => {
   }, [location]);
   
   const fetchData = async () => {
-    const data = await fetch(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`);
+    const data = await fetch('https://corsproxy.io/?' + encodeURIComponent(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`));
     const json = await data.json();
     let resData = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     setRestaurantList(resData);
