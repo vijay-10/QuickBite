@@ -9,6 +9,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredResList, setFilteredResList] = useState([]);
   const [location, setLocation] = useState([17.4171113, 78.4616959]);
+  const [place, setPlace] = useState('Hyderabad');
 
   useEffect(() => {
     fetchData();
@@ -18,6 +19,9 @@ const Body = () => {
     const data = await fetch('https://corsproxy.io/?' + encodeURIComponent(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`));
     const json = await data.json();
     let resData = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    const placeData = await fetch('https://api.openweathermap.org/geo/1.0/reverse?appid=5312b0df12612a90867f342c2c5b0419&'+ `lat=${location[0]}&lon=${location[1]}`);
+    const placeDatajson = await placeData.json();
+    setPlace(`${placeDatajson[0].name}, ${placeDatajson[0].state}`)
     setRestaurantList(resData);
     setFilteredResList(resData);
   };
@@ -45,7 +49,7 @@ const Body = () => {
             }}
           />
           <button
-          className="px-4 py-2 rounded-md hover:shadow-md bg-gray-100 text-gray-600"
+          className="px-4 py-2 rounded-md hover:shadow-md font-semibold bg-gray-100 text-gray-600"
             onClick={(e) => {
               e.preventDefault();
               const filteredList = restaurantList?.filter((res) =>
@@ -62,10 +66,9 @@ const Body = () => {
           className="px-4 py-2 w-48 text-black-600 font-semibold rounded-md hover:shadow-md hover:bg-orange-400 hover:text-white bg-gray-200"
             onClick={() => {
               navigator.geolocation.getCurrentPosition((position) => {
-                setLocation([
-                  position.coords.latitude,
-                  position.coords.longitude,
-                ]);
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                setLocation([lat, lon]);
               });
             }}
           >
@@ -84,10 +87,13 @@ const Body = () => {
         </div>
       </div>
       {restaurantList?.length ? (
-        <div className="res-container flex flex-wrap justify-center gap-2">
-          {filteredResList?.map((restaurant) => (
-            <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
-          ))}
+        <div>
+            <h1 className="text-center mt-6 mb-2 text-xl text-gray-600 font-bold">Showing restaurants in <span className="font-bold text-orange-400 hover:text-gray-600 hover:cursor-pointer">{place}</span></h1>
+            <div className="res-container flex flex-wrap justify-center gap-2">
+            {filteredResList?.map((restaurant) => (
+                <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+            ))}
+            </div>
         </div>
       ) : (
         <Shimmer />

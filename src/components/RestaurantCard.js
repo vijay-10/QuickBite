@@ -33,7 +33,7 @@ const RestaurantCard = (props) => {
             }`}
           >
             <AiFillStar className="text-base text-white" />{" "}
-            <p>{avgRating.toFixed(1)}</p>
+            <p>{avgRating? avgRating.toFixed(1) : 'NA'}</p>
           </h4>
         </div>
       </Link>
