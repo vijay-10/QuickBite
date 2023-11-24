@@ -16,12 +16,12 @@ const Body = () => {
   }, [location]);
   
   const fetchData = async () => {
-    const data = await fetch('https://corsproxy.io/?' + encodeURIComponent(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`));
+    const data = await fetch('https://corsproxy.io/?' + RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`);
     const json = await data.json();
     let resData = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const placeData = await fetch('https://api.openweathermap.org/geo/1.0/reverse?appid=5312b0df12612a90867f342c2c5b0419&'+ `lat=${location[0]}&lon=${location[1]}`);
     const placeDatajson = await placeData.json();
-    setPlace(`${placeDatajson[0].name}, ${placeDatajson[0].state}`)
+    setPlace(`${placeDatajson[0].name.split(' ')[0]}, ${placeDatajson[0].state}, ${placeDatajson[0].country}`)
     setRestaurantList(resData);
     setFilteredResList(resData);
   };
@@ -68,6 +68,7 @@ const Body = () => {
               navigator.geolocation.getCurrentPosition((position) => {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
+                console.log([lat, lon]);
                 setLocation([lat, lon]);
               });
             }}
