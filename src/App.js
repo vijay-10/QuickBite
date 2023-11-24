@@ -15,7 +15,7 @@ const AppLayout = () => {
   return (
     <Provider store={appStore}>
         <AuthContextProvider>
-        <div className="app w-[80%] mx-auto">
+        <div className="app lg:w-[80%] mx-auto">
             <Header />
             <Outlet />
         </div>

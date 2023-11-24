@@ -34,7 +34,7 @@ const RestaurantMenu = () => {
       .map((category) => category?.card?.card);
 
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="w-11/12 md:w-8/12 mx-auto">
       <div className="text-center my-6 pb-6 border-b border-gray-300 flex justify-between items-center">
         <div className="text-left flex flex-col gap-1">
           <h1 className="text-2xl font-bold text-orange-400">{name}</h1>

@@ -22,7 +22,7 @@ const Header = () => {
   const cartItems = useSelector((store) => store?.cart?.items);
 
   return (
-    <div className="flex justify-between mb-4 pb-4 pr-6 shadow-md rounded-xl">
+    <div className="flex flex-col md:flex-row items-center justify-between mb-4 pb-4 md:pr-6 shadow-md rounded-xl">
       <Link to="/">
         <div className="relative flex flex-col items-center">
           <img className="w-40 aspect-sqaure" alt="Logo" src={LOGO_URL} />
@@ -46,7 +46,7 @@ const Header = () => {
             <Link to="/cart">Cart - ({cartItems?.length})</Link>
           </li>
           <li
-            className="nav-item login bg-gray-100 hover:bg-orange-400 hover:text-white px-2 rounded-md shadow-md cursor-pointer"
+            className="nav-item login hidden sm:block bg-gray-100 hover:bg-orange-400 hover:text-white px-2 rounded-md shadow-md cursor-pointer"
             onClick={() => {
                 ctx?.isLoggedIn
                   ? handleLogout()

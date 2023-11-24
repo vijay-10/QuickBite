@@ -11,7 +11,7 @@ const Cart = () => {
 
   const cartItems = useSelector((store) => store?.cart?.items);
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="w-11/12 md:w-8/12 mx-auto">
       <div className="text-center">
         <h1 className="mb-4 text-4xl font-bold text-gray-600">Cart</h1>
         <button
