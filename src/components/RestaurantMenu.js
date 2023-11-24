@@ -8,6 +8,7 @@ import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  console.log(resInfo);
 
   const [showIndex, setShowIndex] = useState(0);
 
@@ -25,9 +26,9 @@ const RestaurantMenu = () => {
     avgRating,
   } = resInfo?.cards[0]?.card?.card?.info;
 
-  const categories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-      .filter((category) => {
+  let categories =
+    resInfo?.cards[2]?.groupedCard? resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  categories = categories.filter((category) => {
         return category?.card?.card["@type"].endsWith("ItemCategory");
       })
       .map((category) => category?.card?.card);

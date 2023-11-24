@@ -18,7 +18,6 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch('https://corsproxy.io/?' + RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`);
     const json = await data.json();
-    console.log((json));
     let resData = json?.data?.cards[2]?.card?.card?.gridElements? json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants : json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const placeData = await fetch('https://api.openweathermap.org/geo/1.0/reverse?appid=5312b0df12612a90867f342c2c5b0419&'+ `lat=${location[0]}&lon=${location[1]}`);
     const placeDatajson = await placeData.json();
