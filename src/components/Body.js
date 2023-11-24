@@ -36,7 +36,7 @@ const Body = () => {
   }
 
   return (
-    <div className="body w-[95%] mx-auto">
+    <div className="body w-[95%] sm:w-full mx-auto">
       <div className="filter flex flex-col gap-4">
         <form className="flex flex-col items-center gap-3">
           <input
