@@ -23,12 +23,12 @@ const Cart = () => {
       </div>
       {cartItems?.length === 0 && (
         <div className="flex flex-col gap-4 items-center">
-          <p className="text-3xl mt-24 text-gray-600">
+          <p className="text-3xl mt-24 text-gray-600 text-center">
             The cart is empty, please add some items!
           </p>
           <Link
             to="/"
-            className="px-3 py-2 my-2 bg-gray-800 text-white rounded-lg font-bold text-lg"
+            className="px-3 py-2 my-2 bg-gray-800 text-white rounded-lg font-bold text-lg text-center"
             onClick={handleClearCart}
           >
             Browse Restaurants
