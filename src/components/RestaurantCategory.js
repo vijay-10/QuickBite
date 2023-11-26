@@ -2,6 +2,12 @@ import { BsArrowUpSquare, BsArrowDownSquare } from "react-icons/bs";
 import ItemsList from "./ItemsList.js";
 
 const RestaurantCategory = ({ showItems, setIndex, category }) => {
+  const items = category?.itemCards
+    ?.map((item) => item?.card?.info)
+    .reduce((items, item) => {
+      items[item.id] = { ...item, quantity: 0 };
+      return items;
+    }, {});
   return (
     <div
       className={`hover:shadow-xl hover:py-5 hover:bg-orange-50 transition-all p-4 mb-2 ${
@@ -26,7 +32,7 @@ const RestaurantCategory = ({ showItems, setIndex, category }) => {
         </span>
       </div>
       {/* Accordian body */}
-      {showItems && <ItemsList items={category?.itemCards.map(item => item?.card?.info)} />}
+      {showItems && <ItemsList items={items} />}
     </div>
   );
 };

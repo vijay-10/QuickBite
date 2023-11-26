@@ -21,7 +21,7 @@ const Cart = () => {
           Clear Cart
         </button>
       </div>
-      {cartItems?.length === 0 && (
+      {Object.keys(cartItems)?.length === 0 ? (
         <div className="flex flex-col gap-4 items-center">
           <p className="text-3xl mt-24 text-gray-600 text-center">
             The cart is empty, please add some items!
@@ -34,8 +34,9 @@ const Cart = () => {
             Browse Restaurants
           </Link>{" "}
         </div>
+      ) : (
+        <ItemsList items={cartItems} />
       )}
-      <ItemsList items={cartItems} />
     </div>
   );
 };

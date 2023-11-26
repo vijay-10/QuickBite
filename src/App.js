@@ -1,9 +1,9 @@
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -11,15 +11,17 @@ import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import { AuthContextProvider } from "./utils/auth-context";
 
+const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
+
 const AppLayout = () => {
   return (
     <Provider store={appStore}>
-        <AuthContextProvider>
+      <AuthContextProvider>
         <div className="app lg:w-[80%] mx-auto">
-            <Header />
-            <Outlet />
+          <Header />
+          <Outlet />
         </div>
-        </AuthContextProvider>
+      </AuthContextProvider>
     </Provider>
   );
 };
@@ -43,13 +45,16 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
+        element: (
+          <Suspense>
+            <RestaurantMenu />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
         element: <Cart />,
       },
-
     ],
     errorElement: <Error />,
   },

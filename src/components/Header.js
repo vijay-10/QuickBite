@@ -5,21 +5,20 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 import AuthContext from "../utils/auth-context";
 
-
 const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const ctx = useContext(AuthContext);
-  
+
   const handleLogout = () => {
     ctx?.onLogout();
-  }
+  };
 
   const handleLogin = () => {
     ctx?.onLogin();
-  }
-  
-  const cartItems = useSelector((store) => store?.cart?.items);
+  };
+
+  const totalItems = useSelector((store) => store?.cart?.totalItems);
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between mb-4 pb-4 md:pr-6 shadow-md rounded-xl">
@@ -43,17 +42,15 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
           <li className="nav-item bg-gray-100 hover:bg-orange-400 hover:text-white px-2 rounded-md shadow-md cursor-pointer">
-            <Link to="/cart">Cart - ({cartItems?.length})</Link>
+            <Link to="/cart">Cart - ({totalItems})</Link>
           </li>
           <li
             className="nav-item login hidden sm:block bg-gray-100 hover:bg-orange-400 hover:text-white px-2 rounded-md shadow-md cursor-pointer"
             onClick={() => {
-                ctx?.isLoggedIn
-                  ? handleLogout()
-                  : handleLogin();
-              }}
+              ctx?.isLoggedIn ? handleLogout() : handleLogin();
+            }}
           >
-            {ctx?.isLoggedIn ? 'Logout' : 'Login'} {onlineStatus ? "🟢" : "🔴"}
+            {ctx?.isLoggedIn ? "Logout" : "Login"} {onlineStatus ? "🟢" : "🔴"}
           </li>
         </ul>
       </div>

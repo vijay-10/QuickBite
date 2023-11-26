@@ -1,4 +1,4 @@
-import Shimmer from "./Shimmer";
+import MenuShimmer from "./MenuShimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "./../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
 
   const [showIndex, setShowIndex] = useState(0);
 
-  if (resInfo === null) return <Shimmer />;
+  if (resInfo === null) return <MenuShimmer />;
 
   const {
     name,
@@ -25,12 +25,14 @@ const RestaurantMenu = () => {
     avgRating,
   } = resInfo?.cards[0]?.card?.card?.info;
 
-  let categories =
-    resInfo?.cards[2]?.groupedCard? resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  categories = categories.filter((category) => {
-        return category?.card?.card["@type"].endsWith("ItemCategory");
-      })
-      .map((category) => category?.card?.card);
+  let categories = resInfo?.cards[2]?.groupedCard
+    ? resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+    : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  categories = categories
+    .filter((category) => {
+      return category?.card?.card["@type"].endsWith("ItemCategory");
+    })
+    .map((category) => category?.card?.card);
 
   return (
     <div className="w-11/12 md:w-8/12 mx-auto">
@@ -62,7 +64,9 @@ const RestaurantMenu = () => {
             key={category?.title}
             showItems={index == showIndex}
             setIndex={
-              showIndex === index ? () => setShowIndex(null) : () => setShowIndex(index)
+              showIndex === index
+                ? () => setShowIndex(null)
+                : () => setShowIndex(index)
             }
             category={category}
           />

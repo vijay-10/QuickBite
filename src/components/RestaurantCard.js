@@ -5,7 +5,8 @@ import { AiFillStar } from "react-icons/ai";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla, id } = resData?.info;
+  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla, id } =
+    resData?.info;
 
   return (
     <div
@@ -33,7 +34,7 @@ const RestaurantCard = (props) => {
             }`}
           >
             <AiFillStar className="text-base text-white" />{" "}
-            <p>{avgRating? avgRating.toFixed(1) : 'NA'}</p>
+            <p>{avgRating ? avgRating.toFixed(1) : "NA"}</p>
           </h4>
         </div>
       </Link>
