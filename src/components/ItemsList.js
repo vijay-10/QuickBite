@@ -21,15 +21,15 @@ const ItemsList = ({ items }) => {
       {items?.map((item) => (
         <div
           className="flex justify-between border-b py-4 border-gray-400"
-          key={item?.card?.info?.id}
+          key={item?.id}
         >
           <div className="flex flex-col w-8/12 md:w-10/12">
-            <span className="font-semibold">{item.card.info.name}</span>
+            <span className="font-semibold">{item?.name}</span>
             <span className="tracking-wider">
-              ₹ {item?.card?.info?.price ? item?.card?.info?.price / 100 : item?.card?.info?.defaultPrice / 100}
+              ₹ {item?.price ? item?.price / 100 : item?.defaultPrice / 100}
             </span>
             <div className="text-sm text-gray-400">
-              {item?.card?.info?.description}
+              {item?.description}
             </div>
           </div>
           <div className="relative w-28 sm:w-36">
@@ -42,10 +42,10 @@ const ItemsList = ({ items }) => {
             >
               ADD +
             </button>
-            {item?.card?.info?.imageId && (
+            {item?.imageId && (
               <img
                 className="rounded-lg"
-                src={CLOUDINARY_URL + item.card.info.imageId}
+                src={CLOUDINARY_URL + item?.imageId}
               ></img>
             )}
           </div>

@@ -26,7 +26,7 @@ const RestaurantCategory = ({ showItems, setIndex, category }) => {
         </span>
       </div>
       {/* Accordian body */}
-      {showItems && <ItemsList items={category?.itemCards} />}
+      {showItems && <ItemsList items={category?.itemCards.map(item => item?.card?.info)} />}
     </div>
   );
 };
