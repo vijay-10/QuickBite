@@ -2,11 +2,17 @@ import React from "react";
 import { CLOUDINARY_URL } from "./../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ItemsList = ({ items }) => {
+    const success = () => {
+        toast.success("Item added", { position: toast.POSITION.BOTTOM_CENTER });
+      };
   const dispatch = useDispatch();
   const handleAddItem = (item) => {
     dispatch(addItem(item));
+    success();
   };
   return (
     <div className="items flex flex-col py-4 gap-2">
@@ -45,6 +51,7 @@ const ItemsList = ({ items }) => {
           </div>
         </div>
       ))}
+      <ToastContainer autoClose={500} />
     </div>
   );
 };
