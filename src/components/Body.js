@@ -17,8 +17,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      RESTAURANTS_API +
-        `lat=${location[0]}&lng=${location[1]}`
+      'https://corsproxy.org/?'+ encodeURIComponent(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`)
     );
     const json = await data.json();
     let resData = json?.data?.cards[2]?.card?.card?.gridElements
