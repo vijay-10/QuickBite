@@ -17,7 +17,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://corsproxy.io/?" +
+      "https://thingproxy.freeboard.io/fetch/" +
         RESTAURANTS_API +
         `lat=${location[0]}&lng=${location[1]}`
     );
