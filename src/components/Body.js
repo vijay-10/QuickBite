@@ -21,7 +21,7 @@ const Body = () => {
     );
     const json = await data.json();
     let resData = json?.data?.cards[2]?.card?.card?.gridElements
-      ? json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      ? json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       : json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
