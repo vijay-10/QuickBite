@@ -20,7 +20,7 @@ const Body = () => {
       'https://corsproxy.org/?'+ encodeURIComponent(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`)
     );
     const json = await data.json();
-    let resData = json?.data?.cards[2]?.card?.card?.gridElements
+    let resData = json?.data?.cards[1]?.card?.card?.gridElements
       ? json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       : json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
