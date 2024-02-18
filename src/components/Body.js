@@ -20,10 +20,10 @@ const Body = () => {
       'https://corsproxy.org/?'+ encodeURIComponent(RESTAURANTS_API + `lat=${location[0]}&lng=${location[1]}`)
     );
     const json = await data.json();
-    let resData = json?.data?.cards[2]?.card?.card?.gridElements
-      ? json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+    let resData = json?.data?.cards[1]?.card?.card?.gridElements
+      ? json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
-      : json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      : json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
     const placeData = await fetch(
       "https://api.openweathermap.org/geo/1.0/reverse?appid=5312b0df12612a90867f342c2c5b0419&" +
