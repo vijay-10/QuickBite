@@ -23,11 +23,11 @@ const RestaurantMenu = () => {
     feeDetails,
     totalRatingsString,
     avgRating,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  } = resInfo?.cards[2]?.card?.card?.info;
 
-  let categories = resInfo?.cards[2]?.groupedCard
-    ? resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-    : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  let categories = resInfo?.cards[4]?.groupedCard
+    ? resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+    : resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
   categories = categories
     .filter((category) => {
       return category?.card?.card["@type"].endsWith("ItemCategory");
