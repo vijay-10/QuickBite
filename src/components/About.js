@@ -69,14 +69,14 @@ const About = () => {
               <SiLinkedin className="cursor-pointer text-gray-500 hover:text-indigo-600" />
             </a>
             <a
-              href="https://github.com/vijay-10"
+              href="https://github.com/vijaynvvr"
               className="w-6 mx-1"
               target="_blank"
             >
               <SiGithub className="cursor-pointer text-gray-500 hover:text-indigo-600" />
             </a>
             <a
-              href="https://leetcode.com/vj_5/"
+              href="https://leetcode.com/vijaynvvr/"
               className="w-6 mx-1"
               target="_blank"
             >
